@@ -1,0 +1,89 @@
+h1{font-family: 'Corben', cursive;
+	font-size: 4rem;
+  font-weight: 5000;
+	color: white;
+	letter-spacing: 0.1rem;
+	text-shadow: 0px 3px 3px rgba(0, 0, 0, 0.66);}
+#space{
+
+  width:600px;
+  height:400px;
+  font-family:Georgia, 'Times New Roman', Times, serif;
+}
+body,#zizag
+{
+    width:100%;
+    height: 100%;
+background-image: url('backgroundimage.jpg');
+
+    position: relative;
+}
+#lineOneZizag {
+
+  font-size:30px;
+padding:0;
+margin:0;
+color:rgb(68, 41, 5);
+background-color: rgb(50, 205, 179);
+    position: absolute;
+    bottom: 10px;
+    width:500px;
+    transform: rotate(45deg);
+    border:3px solid #1785b1;
+}
+#lineTwoZizag
+{
+  font-size:30px;
+  padding:0;
+  margin:0;
+  color:rgb(68, 41, 5);
+  background-color: rgb(205, 133, 50);
+    position: absolute;
+    bottom: 10px;
+    left: 385px;
+    width:500px;
+    transform: rotate(-45deg);
+    border:3px solid #a1156c;
+
+}
+#lineThreeZizag
+{
+  font-size:30px;
+padding:0;
+margin:0;
+color:rgb(68, 41, 5);
+background-color: rgb(50, 205, 179);
+      position: absolute;
+      bottom: 10px;
+      left: 770px;
+      width:500px;
+      transform: rotate(45deg);
+      border:3px solid #1785b1;
+
+}
+#lineFourZizag
+{ font-size:30px;
+  padding:0;
+  margin:0;
+  color:rgb(68, 41, 5);
+  background-color: rgb(205, 133, 50);
+    position: absolute;
+    bottom: 10px;
+    left: 1155px;
+    width:500px;
+    transform: rotate(-45deg);
+    border:3px solid #a1156c;
+}
+#lineFiveZizag
+{font-size:30px;
+  padding:0;
+  margin:0;
+  color:rgb(68, 41, 5);
+  background-color: rgb(50, 205, 179);
+    position: absolute;
+    bottom: 10px;
+    left: 1540px;
+    width:500px;
+    transform: rotate(45deg);
+    border:3px solid #1785b1;
+}
