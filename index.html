@@ -1,0 +1,589 @@
+<html onclick="snd1.play()">
+<head>
+<title>Traffic Racer</title>
+<style>
+    body
+    {
+        height:100%;
+        width:100%;
+        margin:0;
+        background-image:url('imgsandsounds/nature.jpg');
+        background-repeat:no-repeat;
+        background-attachment: fixed;
+      background-size: cover;
+        font-family: sans-serif;
+    }
+    #container
+    {
+        position:relative;
+        height:90vh;
+        width: 25%;
+        left: 35%;
+        margin-top: 20px;
+        background-color: #292929;
+        overflow: hidden;
+    }
+    .line
+    {
+        position: absolute;
+        height: 150px;
+        width:4%;
+        margin-left: 48%;
+        background-color: rgba(255,255,255,0.5);
+    
+    }
+    #line_1
+    {
+        top: -150px;
+    }
+    #line_2
+    {
+        top:150px;
+    }
+    #line_3
+    {
+        top:425px;
+    }
+    .car
+    {
+        position:absolute;
+        height:60px;
+        width: 40px;
+        border-radius:5px;
+        box-shadow: 0px 1px 8px 0px black;
+    }
+    #car
+    {
+        bottom:8%;
+        left:60%;
+        background-color: #c5c50b;
+    }
+    .f_glass
+    {
+        position: absolute;
+        height:20%;
+        width: 60%;
+        margin-left:20%;
+        bottom :15%;
+        border-radius:5px 5px 0px 0px;
+        background: #484848;
+    }
+    .f_light_l
+    {
+        position:absolute;
+        height: 10%;
+        width:	20%;
+        margin-left: 10%;
+        top:-6%;
+        border-radius: 5px 5px 0px 0px;
+        background-color: #efefef;
+    }
+    .f_light_r
+    {
+        position:absolute;
+        height: 10%;
+        width: 20%;
+        margin-left: 70%;
+        top:-6%;
+        border-radius:5px 5px 0px 0px;
+        background-color: #efefef;
+    }
+    .f_tyre_l
+    {
+        position:absolute;
+        height:20%;
+        width:10%;
+        background-color: grey;
+        top:20%;
+        left:-10%;
+        border-radius:5px 0px 0px 5px;
+    }
+    .f_tyre_r
+    {
+        position: absolute;
+        height:20%;
+        width:10%;
+        background-color: grey;
+        top:70%;
+        left:100%;
+        border-radius:0px 5px 5px 0px;
+    }
+    .b_glass
+    {
+        position: absolute;
+        height:20%;
+        width: 60%;
+        margin-left:20%;
+        bottom :60%;
+        border-radius:5px 5px 0px 0px;
+        background: #484848;
+    }
+    .b_tyre_l
+    {
+        position:absolute;
+        height:20%;
+        width:10%;
+        background-color: grey;
+        top:70%;
+        left:-10%;
+        border-radius:5px 0px 0px 5px;
+    }
+    .b_tyre_r
+    {
+        position:absolute;
+        height:20%;
+        width:10%;
+        background-color: grey;
+        top:20%;
+        left:100%;
+        border-radius:0px 5px 5px 0px;
+    }
+    #car_1
+    {
+        top:-100px;
+        left:60%;
+        background-color: #26c5ff;
+    }
+    #car_2
+    {
+        top:-200px;
+        left:40%;
+        background-color: #26c5ff;
+    }
+    #car_3
+    {
+        top:-350px;
+        left:50%;
+        background-color: #26c5ff;
+    }
+    #restart_div
+    {
+        position:absolute;
+        height: 100%;
+        width:100%;
+        background-color: #292929;
+        color:white;
+        font-family:sans-serif;
+        font-size: 40px;
+        text-align: center;
+        display:none;
+    }
+    #restart
+    {
+        border:none;
+        padding:25px;
+        color:white;
+        background-color: #8a64ff;
+        font-size: 30px;
+        margin-top: 30%;
+    }
+    .small_text
+    {
+        font-size: 15px;
+    }
+    #score_div
+    {
+        position:absolute;
+        margin-top: 20%;
+        margin-left:10%;
+        font-size:35px;
+        background-color: white;
+        color:#454545;
+        padding:10px;
+        box-shadow: 4px 4px 0px 1px #808080;
+    }
+    #levels{
+        position:absolute;
+        margin-top:120px;
+        margin-left:10%;
+        font-size:35px;
+        background-color: white;
+        color:#454545;
+        padding:10px;
+        box-shadow: 4px 4px 0px 1px #808080; 
+    }
+	@media only screen and (max-width: 600px) {
+    #levels{
+		margin-top:50px;
+
+	}
+  }
+    </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+</head>
+<body>
+	<div id="score_div">
+		Score:<span id="score">0</span>
+	</div>
+	<div id='levels'>Level:<span id='level'>1</span></div>
+	<div id="container">
+		<div id="line_1" class="line"></div>
+		<div id="line_2" class="line"></div>
+		<div id="line_3" class="line"></div>
+		<div id="car" class="car">
+			<div class="f_glass"></div>
+			<div class="b_glass"></div>
+			<div class="f_light_l"></div>
+			<div class="f_light_r"></div>
+			<div class="f_tyre_l"></div>
+			<div class="f_tyre_r"></div>
+			<div class="b_tyre_l"></div>
+			<div class="b_tyre_r"></div>
+		</div>
+		<div id="car_1" class="car">
+			<div class="f_glass"></div>
+			<div class="b_glass"></div>
+			<div class="f_light_l"></div>
+			<div class="f_light_r"></div>
+			<div class="f_tyre_l"></div>
+			<div class="f_tyre_r"></div>
+			<div class="b_tyre_l"></div>
+			<div class="b_tyre_r"></div>
+		</div>
+		<div id="car_2" class="car">
+			<div class="f_glass"></div>
+			<div class="b_glass"></div>
+			<div class="f_light_l"></div>
+			<div class="f_light_r"></div>
+			<div class="f_tyre_l"></div>
+			<div class="f_tyre_r"></div>
+			<div class="b_tyre_l"></div>
+			<div class="b_tyre_r"></div>
+		</div>
+		<div id="car_3" class="car">
+			<div class="f_glass"></div>
+			<div class="b_glass"></div>
+			<div class="f_light_l"></div>
+			<div class="f_light_r"></div>
+			<div class="f_tyre_l"></div>
+			<div class="f_tyre_r"></div>
+			<div class="b_tyre_l"></div>
+			<div class="b_tyre_r"></div>
+		</div>
+		<div id="restart_div">
+			<button id="restart">
+				Restart<br>
+				<small class="small_text"> Press Enter</small>
+				</button>
+		</div>	
+	</div> 
+	<audio data-key="37" src="imgsandsounds/arrow.wav"></audio>
+	<audio data-key="39" src="imgsandsounds/arrow.wav"></audio>
+	<audio data-key="38" src="imgsandsounds/arrow.wav"></audio>
+	<audio data-key="40" src="imgsandsounds/arrow.wav"></audio>
+	<audio loop id="a"  >
+		<source  src="imgsandsounds/mainsound.mp3">
+		  
+		</audio>
+
+		<script>
+
+			$(function(){
+			
+				var anim_id;
+				//saving dom objects to variable
+				var container = $("#container");
+				var car = $("#car");
+				var car_1 = $("#car_1");
+				var car_2 = $("#car_2");
+				var car_3 = $("#car_3");
+				var line_1 = $("#line_1");
+				var line_2 = $("#line_2");
+				var line_3 = $("#line_3");
+				var restart_div = $("#restart_div");
+				var restart_btn = $("#restart");
+				var score = $("#score");
+				var level = $("#level");
+				// saving some initial setup
+				var container_left = parseInt(container.css('left'));
+				var container_width = parseInt(container.width());
+				var container_height = parseInt(container.height());
+				var car_width = parseInt(car.width());
+				var car_height = parseInt(car.height());
+				// some other declaration
+				var gameover = false;
+				var score_counter = 1;
+				var speed = 2;
+				var line_speed = 5;
+				var move_right = false;
+				var move_left = false;
+				var move_up = false;
+				var move_down = false;
+				/*---------------------------------------GAME CODE STARTS HERE -----------------------------------------*/
+			
+				var snd1  = new Audio ();
+			var src1  = document.createElement("source");
+			src1.type = "audio/mpeg";
+			src1.src  = "imgsandsounds/mainsound.mp3";
+			src1.loop='true';
+			snd1.appendChild(src1);
+			window.onload = (event) => {
+				alert('Press any key to begin the game')
+			  snd1.play();
+			};
+			
+				$(document).on('keydown',function(e){
+					snd1.play();
+				playSound(e);
+				if(gameover === false){
+					var key = e.keyCode;
+					if(key === 37 && move_left === false){
+						move_left = requestAnimationFrame(left);
+					}
+					else if(key === 39 && move_right === false){
+						move_right = requestAnimationFrame(right);
+					}
+					else if(key === 38 && move_up === false){
+					move_up = requestAnimationFrame(up);
+					}
+					else if(key === 40 && move_down === false){
+					move_down = requestAnimationFrame(down);
+					}		
+				}//if(parseInt(score.text())>=20){
+				//	decision.innerHTML='You Win!!!'
+				//		stop_the_game();
+				//	}	
+				})
+				$(document).on('keyup',function(e){
+					
+					if(gameover === false){
+					var key = e.keyCode;
+					if(key === 37){
+					cancelAnimationFrame(move_left);
+					move_left = false;
+				}
+					else if(key === 39){
+					cancelAnimationFrame(move_right);
+					move_right = false;
+				}
+					else if(key === 38){
+					cancelAnimationFrame(move_up);
+					move_up = false;
+				}
+					else if(key === 40){
+					cancelAnimationFrame(move_down);
+					move_down = false;
+				}
+			}//if(parseInt(score.text())>=20){
+			//	decision.innerHTML='You Win!!!'
+			//			stop_the_game();
+			//		}
+				});
+				function mainplay(){
+			voice=document.getElementById('a');
+			//if(!voice) return;
+			//voice.currentTime=0;
+			snd1.play();
+			voice.play()
+				}
+				function removeTransition(e) {
+				if (e.propertyName !== 'transform') return;
+				e.target.classList.remove('playing');
+			  }
+			
+			  function playSound(e) {
+				const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+			   //console.log(audio);
+				const key = document.querySelector(`div[data-key="${e.keyCode}"]`);
+				if (!audio) return;
+			
+			   // key.classList.add('playing');
+				audio.currentTime = 0;
+				audio.play();
+			  }
+			
+			
+				function left(){
+				
+					if(gameover === false && parseInt(car.css('left'))>0){
+						car.css('left',parseInt(car.css('left'))-5);
+						move_left = requestAnimationFrame(left);
+					}
+				//	if(parseInt(score.text())>=20){
+				//		decision.innerHTML='You Win!!!'
+				//		stop_the_game();
+				//	}
+				}
+				function right(){
+				
+					if(gameover === false && parseInt(car.css('left'))< container_width-car_width){
+						car.css('left',parseInt(car.css('left'))+5)
+						move_right = requestAnimationFrame(right);
+					}
+				//	if(parseInt(score.text())>=20){
+				//		decision.innerHTML='You Win!!!'
+				//		stop_the_game();
+				//	}
+				}
+				function up(){
+					
+					if(gameover === false && parseInt(car.css('top'))>0){
+						car.css('top',parseInt(car.css('top')) - 5)
+						move_up = requestAnimationFrame(up);
+					}
+					//if(parseInt(score.text())>=20){
+					//	decision.innerHTML='You Win!!!'
+					//	stop_the_game();
+				//	}
+				}
+			
+				function down(){
+					
+					if(gameover === false && parseInt(car.css('top'))< container_height - car_height){
+						car.css('top',parseInt(car.css('top')) + 5)
+						move_down = requestAnimationFrame(down);
+					}
+					//if(parseInt(score.text())>=20){
+					//	decision.innerHTML='You Win!!!'
+					//	stop_the_game();
+					//}
+				}
+				anim_id = requestAnimationFrame(repeat);
+			
+				 function repeat()
+				 {
+					 snd1.play();
+					if(parseInt(score.text())>=20){
+						snd1.pause();
+					alert('You win!!!')
+						stop_the_game();
+					}
+					 if(gameover === false){
+						
+			
+						 if(collision(car,car_1) || collision(car,car_2) || collision(car,car_3))
+						 {
+							snd1.pause();
+							 stop_the_game();
+							 alert('You lose')
+							
+						 }
+			
+						 score_counter++;
+						 if(score_counter % 100 == 0){
+							 score.text(parseInt(score.text()) + 1);
+							 
+						 }
+						 if(score_counter % 500 == 0){
+							 level.text(parseInt(level.text())+1);
+							 if(parseInt(level.text())==2){
+								document.body.style.backgroundImage = "url('imgsandsounds/lighttree.jpg')";
+								document.getElementById('car').style.backgroundColor = "red";
+								document.getElementById('car_1').style.backgroundColor = "green";
+								document.getElementById('car_2').style.backgroundColor = "green";
+								document.getElementById('car_3').style.backgroundColor = "green";
+							 }
+							 if(parseInt(level.text())==3){
+								document.body.style.backgroundImage = "url('imgsandsounds/autumn.jpg')";
+								document.getElementById('car').style.backgroundColor = "coral";
+								document.getElementById('car_1').style.backgroundColor = "lightblue";
+								document.getElementById('car_2').style.backgroundColor = "lightblue";
+								document.getElementById('car_3').style.backgroundColor = "lightblue";
+							 }
+							 if(parseInt(level.text())==4){
+								document.body.style.backgroundImage = "url('imgsandsounds/pond.jpg')";
+								document.getElementById('car').style.backgroundColor = "brown";
+								document.getElementById('car_1').style.backgroundColor = "cyan";
+								document.getElementById('car_2').style.backgroundColor = "cyan";
+								document.getElementById('car_3').style.backgroundColor = "cyan";
+							 }
+							 if(parseInt(level.text())==5){
+								document.body.style.backgroundImage = "url('imgsandsounds/thunder.jpg')";
+								document.getElementById('car').style.backgroundColor = "indigo";
+								document.getElementById('car_1').style.backgroundColor = "white";
+								document.getElementById('car_2').style.backgroundColor = "white";
+								document.getElementById('car_3').style.backgroundColor = "white";
+							 }
+							 speed++;
+							 line_speed++;
+						 }
+						 car_down(car_1);
+						 car_down(car_2);
+						 car_down(car_3);
+			
+			
+						 line_down(line_1);
+						 line_down(line_2);
+						 line_down(line_3);
+			  
+			
+				   anim_id = requestAnimationFrame(repeat);  	
+			
+					 }//if(parseInt(score.text())>=20){
+					//	decision.innerHTML='You Win!!!'
+					//	stop_the_game();
+					//}
+			
+			
+				 }
+				function car_down(car){ // this car is a parameter we use also car as car_p
+				
+					var current_top = parseInt(car.css('top'));
+					if(current_top > container_height){
+						current_top = -200;
+						var car_left = parseInt(Math.random() * (container_width - car_width))
+						car.css('left',car_left); 
+					}
+					car.css('top',current_top + speed);
+				//	if(parseInt(score.text())>=20){
+				//		decision.innerHTML='You Win!!!'
+				//		stop_the_game();
+				//	}
+				}	
+			
+				function line_down(line){
+				
+					var line_current_top = parseInt(line.css('top'));
+					if(line_current_top > container_height){
+						line_current_top = -300;
+					}
+					line.css('top',line_current_top + line_speed);
+					//if(parseInt(score.text())>=20){
+					//	decision.innerHTML='You Win!!!'
+					//	stop_the_game();
+					//}
+				}
+			
+			
+				function stop_the_game(){
+					gameover = true;
+					snd1.pause();
+					cancelAnimationFrame(anim_id);
+					cancelAnimationFrame(move_left);
+					cancelAnimationFrame(move_right);
+					cancelAnimationFrame(move_down);
+					cancelAnimationFrame(move_up);
+					restart_div.slideDown();
+					restart_btn.focus();
+			
+				}
+				restart_btn.click(function(){
+					location.reload();
+				})
+				/*---------------------------------------GAME CODE END HERE -----------------------------------------*/
+				function collision($div1,$div2)
+				{
+					var x1 = $div1.offset().left;
+					var y1 = $div1.offset().top;
+					var h1 = $div1.outerHeight(true);
+					var w1 = $div1.outerWidth(true);
+					var b1 = y1 +h1;
+					var r1 = x1 + w1;
+					var x2 = $div2.offset().left;
+					var y2 = $div2.offset().top;
+					var h2 = $div2.outerHeight(true);
+					var w2 = $div2.outerWidth(true);
+					var b2 = y2 + h2;
+					var r2 = x2 + w2;
+					
+					
+					if(b1 < y2 || y1 > b2 || r1<x2  || x1>x2) return false;
+					return true;
+				}
+				});
+			</script>
+<!--	<audio data-key="71" class='bg' src="imgs/mainsound.mp3"></audio>-->
+</body>
+</html>
