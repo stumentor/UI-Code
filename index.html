@@ -442,7 +442,7 @@
 				}
 				anim_id = requestAnimationFrame(repeat);
 			
-				 function repeat()
+				async function repeat()
 				 {
 					 snd1.play();
 					if(parseInt(score.text())>=20){
@@ -469,6 +469,7 @@
 						 if(score_counter % 500 == 0){
 							 level.text(parseInt(level.text())+1);
 							 if(parseInt(level.text())==2){
+								 await window.open("Quiz Application with Timer/index.html");
 								document.body.style.backgroundImage = "url('imgsandsounds/lighttree.jpg')";
 								document.getElementById('car').style.backgroundColor = "red";
 								document.getElementById('car_1').style.backgroundColor = "green";
@@ -476,6 +477,7 @@
 								document.getElementById('car_3').style.backgroundColor = "green";
 							 }
 							 if(parseInt(level.text())==3){
+								 await window.open("Quiz Application with Timer/index.html");
 								document.body.style.backgroundImage = "url('imgsandsounds/autumn.jpg')";
 								document.getElementById('car').style.backgroundColor = "coral";
 								document.getElementById('car_1').style.backgroundColor = "lightblue";
@@ -483,6 +485,7 @@
 								document.getElementById('car_3').style.backgroundColor = "lightblue";
 							 }
 							 if(parseInt(level.text())==4){
+								 await window.open("Quiz Application with Timer/index.html");
 								document.body.style.backgroundImage = "url('imgsandsounds/pond.jpg')";
 								document.getElementById('car').style.backgroundColor = "brown";
 								document.getElementById('car_1').style.backgroundColor = "cyan";
@@ -490,6 +493,7 @@
 								document.getElementById('car_3').style.backgroundColor = "cyan";
 							 }
 							 if(parseInt(level.text())==5){
+								 await window.open("Quiz Application with Timer/index.html");
 								document.body.style.backgroundImage = "url('imgsandsounds/thunder.jpg')";
 								document.getElementById('car').style.backgroundColor = "indigo";
 								document.getElementById('car_1').style.backgroundColor = "white";
