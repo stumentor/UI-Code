@@ -1,0 +1,30 @@
+Hide-Conceal<br>Cover|
+Hurry-Rush <br> Run| 
+Go-Fade<br> Move~
+Come-Reach<br> Arrive|
+Run-Escape<br> Flee|
+Move-Shuffle<br>Plod~
+Do-Execute<br>Carry Out|
+Have-Hold<br>Own|
+Use-Utilize<br> Consume~
+Get-Gain<br>Earn|
+Keep-Hold<br>Maintain|
+Put-Place<br>Keep~
+Take-Hold<br>Catch|
+Make-Create<br>Form|
+Break-Crack<br>Smash~
+Destroy-Kill<br>Waste|
+Kill-Murder<br>Cancel|
+Cut-Slice<br>Slash~
+Fall-Drop<br>Topple|
+Fly-Flee<br>Wing|
+Decide-Determine<br>Choose~
+Help-Assist<br>Support|
+Mark-Label<br>Tag|
+Plan-Map<br>Plot~
+Show-Display<br>Explain|
+Begin-Start<br>Open|
+End-Stop<br>Finish~
+Little-Small<br>Tiny|
+New-Fresh<br>Current|
+False-Wrong<br> Fake~
